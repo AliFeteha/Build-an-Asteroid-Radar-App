@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="asteroid"
+            type="com.udacity.asteroidradar.Asteroid" />
+        <variable
+            name="asteroidClick"
+            type="com.udacity.asteroidradar.main.OnClickAsteroid" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:onClick="@{() -> asteroidClick.onClick(asteroid)}">
+
+    <TextView
+        android:contentDescription="@{asteroid.codename}"
+        android:id="@+id/title"
+        android:textColor="@color/default_text_color"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@{asteroid.codename}"/>
+
+    <TextView
+        android:text="@{asteroid.closeApproachDate}"
+        android:contentDescription="@{asteroid.closeApproachDate}"
+        android:textColor="@color/default_text_color"
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+    <ImageView
+        android:id="@+id/Asteroid_image"
+        statusIcon="@{asteroid.potentiallyHazardous}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title"
+        android:contentDescription="@{asteroid.isPotentiallyHazardousDescription()}"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
